@@ -1,0 +1,33 @@
+package com.dxc.service;
+
+import java.util.List;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dxc.dao.PaymentDao;
+import com.dxc.model.Payment;
+
+
+
+@Service
+public class PaymentService {
+	
+	@Autowired
+    private  PaymentDao paymentDao;
+
+    
+    public PaymentService(PaymentDao paymentDao) {
+        this.paymentDao = paymentDao;
+    }
+
+    public List<Payment> getAllPayments(String benfaccountNumber) {
+        return paymentDao.findAllByBenfaccountnumber(benfaccountNumber); 
+       }
+
+    public Payment createPayment(Payment payment) {
+        return paymentDao.save(payment);
+    }
+}
+

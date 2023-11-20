@@ -1,0 +1,5 @@
+package com.dxc.model.dao;
+
+public class PaymentDao {
+
+}

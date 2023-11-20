@@ -1,0 +1,42 @@
+package com.dxc.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dxc.dao.TransactionDao;
+import com.dxc.model.Transaction;
+import com.dxc.model.TransactionType;
+import com.dxc.model.User;
+
+@Service
+public class TransactionService {
+	
+	@Autowired
+	private TransactionDao transactionDao;;
+	
+	boolean flag;
+	double ExBal;
+	Transaction trx;
+	double amount;
+	
+	public boolean deposit(User user, double amount){
+		
+		String accountNumber=user.getAccno();
+		
+		if(user!=null)
+		{
+			ExBal = user.getBalance();
+			user.setBalance(ExBal+amount);
+			trx = new Transaction(accountNumber,TransactionType.DEPOSIT,amount);
+			transactionDao.save(trx);
+			flag=true;
+		}
+		else {
+			flag=false;
+		}
+		return flag;
+	}
+
+}

@@ -1,0 +1,28 @@
+package com.dxc.model;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+/*create table REGD_PAYMENT(
+withdrawalid int primary key auto_increment,
+accno varchar(50) not null,
+amount double not null,
+date date not null
+);*/
+
+@Entity
+@Table(name="REGD_PAYMENT")
+public class Payment {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int pymntid;
+	private String benfName;
+    private String benfaccountNumber;
+    private String accno;
+    private double amount;
+    private Date date;
+
+}

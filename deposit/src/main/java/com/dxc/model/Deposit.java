@@ -1,0 +1,65 @@
+package com.dxc.model;
+
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/*create table REGD_DEPOSITS(
+depositid int primary key auto_increment,
+accno varchar(50) not null,
+amount double not null,
+date date not null
+);*/
+
+@Entity
+@Table(name="REGD_DEPOSITS")
+public class Deposit {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int depositid;
+    private String accno;
+    private double amount;
+    private Date date;
+	public Deposit() {
+		super();
+	}
+	public Deposit(int depositid, String accno, double amount, Date date) {
+		super();
+		this.depositid = depositid;
+		this.accno = accno;
+		this.amount = amount;
+		this.date = date;
+	}
+	public int getDepositid() {
+		return depositid;
+	}
+	public void setDepositid(int depositid) {
+		this.depositid = depositid;
+	}
+	public String getAccno() {
+		return accno;
+	}
+	public void setAccno(String accno) {
+		this.accno = accno;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	@Override
+	public String toString() {
+		return "Deposit [depositid=" + depositid + ", accno=" + accno + ", amount=" + amount + ", date=" + date + "]";
+	}
+
+}

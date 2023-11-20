@@ -1,0 +1,13 @@
+package com.dxc.model;
+
+import java.util.Date;
+
+public class Deposit {
+	
+	private Long id;
+
+    private String accno;
+    private double amount;
+    private Date date;
+
+}

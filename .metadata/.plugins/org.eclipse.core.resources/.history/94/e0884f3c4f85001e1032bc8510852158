@@ -1,0 +1,31 @@
+package com.dxc.model;
+import javax.persistence.*;
+
+@Entity
+@Table(name="REGD_TRANS")
+public class Transaction {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int transactionId;
+	private int accountNumber;
+	private TransactionType type;
+	private double transactionAmount;
+	public Transaction() {
+		super();
+	}
+	public Transaction(int transactionId, int accountNumber, TransactionType type, double transactionAmount) {
+		super();
+		this.transactionId = transactionId;
+		this.accountNumber = accountNumber;
+		this.type = type;
+		this.transactionAmount = transactionAmount;
+	}
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", accountNumber=" + accountNumber + ", type=" + type
+				+ ", transactionAmount=" + transactionAmount + "]";
+	}
+	
+	
+}

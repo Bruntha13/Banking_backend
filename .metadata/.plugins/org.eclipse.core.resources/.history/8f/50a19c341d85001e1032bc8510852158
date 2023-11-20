@@ -1,0 +1,29 @@
+package com.dxc.model;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/*create table REGD_APPL(
+applid int primary key auto_increment,
+cardname varchar(50) not null,
+username varchar(50) not null,
+accno varchar(50) not null,
+email varchar(50) not null,
+contactno long not null,
+address varchar(80) not null,
+status varchar(50) not null,
+);*/
+
+@Entity
+@Table(name="REGD_APPL")
+public class application {
+	
+	public int applid;
+	public String cardname;
+	public String username;
+	public String accno;
+	private String email;
+	private long contactno;
+	private String address;
+	private String status;
+
+}

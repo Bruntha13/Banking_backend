@@ -1,0 +1,17 @@
+package com.dxc.model;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+@Entity
+@Table(name="REGD_DEPOSITS")
+public class Deposit {
+	
+	private Long depositid;
+
+    private String accno;
+    private double amount;
+    private Date date;
+
+}

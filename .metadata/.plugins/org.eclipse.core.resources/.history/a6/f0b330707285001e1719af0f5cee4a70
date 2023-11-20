@@ -1,0 +1,39 @@
+package com.dxc.controller;
+package com.dxc.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dxc.model.Deposit;
+import com.dxc.service.DepositService;
+
+
+@RestController
+@RequestMapping
+public class DepositController {
+	
+	@Autowired
+	private  DepositService depositService;
+
+    
+//    public DepositController(DepositService depositService) {
+//        this.depositService = depositService;
+//    }
+
+    @GetMapping("/getdeposits")
+    public List<Deposit> getAllDeposits() {
+        return depositService.getAllDeposits();
+    }
+
+    @PostMapping("/createdeposits")
+    public Deposit createDeposit(@RequestBody Deposit deposit) {
+    	System.out.println(deposit.toString());
+        return depositService.createDeposit(deposit);
+    }
+}

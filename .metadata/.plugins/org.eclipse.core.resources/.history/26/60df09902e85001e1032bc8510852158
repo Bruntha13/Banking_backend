@@ -1,0 +1,50 @@
+package com.dxc.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dxc.exception.ApplExistsException;
+import com.dxc.model.Application;
+
+import com.dxc.model.Application;
+import com.dxc.exception.ApplExistsException;
+import com.dxc.dao.ApplDAO;
+
+public class ApplServiceImpl implements ApplService{
+
+	@Autowired
+	private ApplDAO applDAO;
+	
+	@Override
+	public Application apply(Application appl) throws ApplExistsException {
+		Optional<Application> applNew =applDAO.findById(appl.getApplid());
+		if(applNew.isPresent())
+			throw new ApplExistsException();
+		else 
+			return applDAO.save(appl);		
+	}
+
+	@Override
+	public List<Application> getAllApplicationById(int applid) {
+		return applDAO.findByApplid(applid);
+	}
+
+	@Override
+	public void updateApplicationById(Application appl) {
+		applDAO.save(appl);
+		
+	}
+
+	@Override
+	public void deleteApplicationById(int applid) {
+		Optional<Application> appl=applDAO.findById(applid);
+		if(appl.isPresent()) {
+			applDAO.deleteById(applid);
+		
+		}
+	}
+
+}
